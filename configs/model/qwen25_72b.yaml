@@ -1,0 +1,16 @@
+extends: ../experiment/main.yaml
+name: qwen25_72b
+backbone:
+  name: qwen25_72b
+  lora_rank: 32
+  lora_alpha: 64
+  lora_dropout: 0.05
+  max_seq_len: 4096
+optim:
+  lr: 1.0e-4
+  batch_size: 4
+  grad_accum: 4
+  epochs: 10
+  warmup_ratio: 0.03
+  weight_decay: 0.01
+  precision: bf16

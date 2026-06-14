@@ -1,0 +1,16 @@
+extends: ../experiment/main.yaml
+name: deepseek_v3
+backbone:
+  name: deepseek_v3
+  lora_rank: 32
+  lora_alpha: 64
+  lora_dropout: 0.05
+  max_seq_len: 4096
+optim:
+  lr: 2.0e-4
+  batch_size: 4
+  grad_accum: 4
+  epochs: 10
+  warmup_ratio: 0.06
+  weight_decay: 0.01
+  precision: bf16

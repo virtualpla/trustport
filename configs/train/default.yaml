@@ -1,0 +1,11 @@
+optim:
+  lr: 2.0e-4
+  batch_size: 8
+  grad_accum: 2
+  epochs: 10
+  warmup_ratio: 0.06
+  weight_decay: 0.01
+  ema_decay: 0.999
+  precision: bf16
+seeds: [42, 123, 456, 789, 1024]
+gpu_hours_budget: 120

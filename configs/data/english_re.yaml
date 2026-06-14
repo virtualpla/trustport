@@ -1,0 +1,9 @@
+datasets:
+  chemprot:
+    language: en
+    task: re
+    relations: 13
+    train: 4169
+    val: 2427
+    test: 3469
+    source: BioCreative VI ChemProt

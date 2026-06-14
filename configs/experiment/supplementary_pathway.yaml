@@ -1,0 +1,13 @@
+extends: main.yaml
+name: supplementary_pathway
+data:
+  datasets: [bc5cdr, n2c2, chemprot, medqa, ccks17, ccks19]
+  documents: 156
+  seq_len: 64
+  signal_strength: 3.0
+fusion:
+  clinical_dim: 128
+  policy_dim: 128
+  kbi_dim: 76
+  fused_dim: 128
+  pathways: 4

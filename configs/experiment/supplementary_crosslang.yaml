@@ -1,0 +1,7 @@
+extends: main.yaml
+name: supplementary_crosslang
+data:
+  datasets: [bc5cdr, n2c2, ccks17, ccks19, climedbench]
+  documents: 256
+  seq_len: 64
+  signal_strength: 3.0

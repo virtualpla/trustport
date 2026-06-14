@@ -1,0 +1,16 @@
+extends: ../experiment/main.yaml
+name: chatglm4
+backbone:
+  name: chatglm4
+  lora_rank: 16
+  lora_alpha: 32
+  lora_dropout: 0.05
+  max_seq_len: 2048
+optim:
+  lr: 2.0e-4
+  batch_size: 8
+  grad_accum: 2
+  epochs: 10
+  warmup_ratio: 0.06
+  weight_decay: 0.01
+  precision: bf16

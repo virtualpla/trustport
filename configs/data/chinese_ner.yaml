@@ -1,0 +1,25 @@
+datasets:
+  ccks17:
+    language: zh
+    task: ner
+    entities: 5
+    train: 800
+    val: 100
+    test: 400
+    source: CCKS-2017 shared task
+  ccks19:
+    language: zh
+    task: ner
+    entities: 6
+    train: 1000
+    val: 200
+    test: 379
+    source: CCKS-2019 shared task
+  climedbench:
+    language: zh
+    task: qa
+    classes: 14
+    train: 26988
+    val: 3374
+    test: 3373
+    source: CliMedBench (cross-lingual validation only)

@@ -1,0 +1,53 @@
+name: main
+seed: 42
+format_gamma: 0.3
+init_task_weights: [1.0, 1.5, 0.8, 0.8]
+backbone:
+  name: llama31_8b
+  vocab_size: 4096
+  hidden_dim: 128
+  lora_rank: 16
+  lora_alpha: 32
+  lora_dropout: 0.05
+  max_seq_len: 2048
+tasks:
+  ner_tags: 9
+  relations: 13
+  classes: 4
+  answers: 4
+pmc:
+  alpha_policy: 0.35
+  alpha_measure: 0.30
+  alpha_content: 0.35
+  top_k: 5
+fusion:
+  clinical_dim: 128
+  policy_dim: 128
+  kbi_dim: 76
+  fused_dim: 128
+  pathways: 4
+trust:
+  tau_trust: 0.6
+  consistency_k: 3
+  consistency_tau: 0.7
+optim:
+  lr: 2.0e-4
+  batch_size: 8
+  grad_accum: 2
+  epochs: 10
+  warmup_ratio: 0.06
+  weight_decay: 0.01
+  max_grad_norm: null
+  ema_decay: 0.999
+  precision: bf16
+data:
+  datasets: [bc5cdr, n2c2, chemprot, medqa, ccks17, ccks19]
+  documents: 256
+  seq_len: 64
+  signal_strength: 3.0
+toggles:
+  domain_adapt: true
+  struct_out: true
+  fusion: true
+  trust: true
+  rag: true

@@ -1,0 +1,30 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+      - name: install
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install ruff black isort mypy pytest hypothesis
+          pip install --no-deps -e .
+      - name: ruff
+        run: ruff check .
+      - name: black
+        run: black --check .
+      - name: isort
+        run: isort --check-only .
+      - name: mypy
+        run: mypy --strict trustport
+      - name: pytest
+        run: pytest -q

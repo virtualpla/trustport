@@ -1,0 +1,9 @@
+datasets:
+  policy:
+    language: zh
+    task: scoring
+    dimensions: 3
+    train: 50
+    test: 27
+    source: NHC smart healthcare policy gazette (77 documents)
+    retrospective: MIMIC-IV + MedBench + NHC evaluation reports (156 hospital-years, 2018-2025)

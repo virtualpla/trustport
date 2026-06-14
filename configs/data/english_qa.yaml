@@ -1,0 +1,9 @@
+datasets:
+  medqa:
+    language: en
+    task: qa
+    classes: 4
+    train: 27400
+    val: 3425
+    test: 3426
+    source: MedBench (OpenCompass)

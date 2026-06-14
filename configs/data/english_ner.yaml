@@ -1,0 +1,17 @@
+datasets:
+  bc5cdr:
+    language: en
+    task: ner
+    entities: 2
+    train: 4560
+    val: 4581
+    test: 4797
+    source: BioCreative V CDR corpus
+  n2c2:
+    language: en
+    task: ner
+    entities: 16
+    train: 350
+    val: 50
+    test: 100
+    source: n2c2 2022 track-1

@@ -1,0 +1,4 @@
+extends: main.yaml
+name: ablation_domain
+toggles:
+  domain_adapt: false

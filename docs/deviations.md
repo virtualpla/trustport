@@ -1,0 +1,9 @@
+# Deviations
+
+Each entry: paper anchor, what differs, and why.
+
+| id | paper anchor | deviation | justification |
+|---|---|---|---|
+| D1 | Methods "Framework overview"; Table 8 | The four production LLM backbones (Llama 3.1-8B/70B, Qwen 2.5-72B, DeepSeek-V3 MoE, ChatGLM-4) are represented by a deterministic, trainable surrogate (`customs/backbones.py::DeterministicBackbone`) placed behind the `Backbone` protocol; a guarded `GuardedHFBackbone` raises when `transformers` or weights are absent. | The 8B-671B weights cannot be executed on the development hardware. The LoRA adaptation (Eq 1), multi-task loss (Eq 2), PMC scoring (Eq 3), fusion (Eq 4), trustworthiness (Eq 5-6), Integrated F1 (Eq 7) and the statistical battery are implemented exactly and are backbone-agnostic. |
+| D2 | Table 8; Methods "Evaluation metrics" | Model tensor sizes in `configs/experiment/main.yaml` (hidden 128, vocab 4096, synthetic document length 64) are smaller than production LLM dimensions. The paper's reported training hyperparameters (lr, batch size, grad accumulation, epochs, warmup, weight decay, precision, max sequence length) are kept verbatim. `_smoke.yaml` reduces all sizes further and is labelled for unit-test use only. | The surrogate runs on synthetic cohorts; the compute-profile fields that govern reproduction (Table 8) are preserved unchanged. |
+| D3 | Data availability; Table 7 | Training and evaluation use deterministic synthetic cohorts (`berths/arrivals.py::SyntheticArrivals`) whose latent extraction signal is recoverable, in place of the credentialed corpora. A `load_manifest` reader accepts real records when the corpora are provided locally. | MIMIC-IV and n2c2 2022 require credentialed access / a data use agreement; CCKS / BC5CDR / ChemProt / MedBench are large external downloads. The dataset registry, splits, and class counts mirror Table 7. |
